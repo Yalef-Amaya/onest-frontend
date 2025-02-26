@@ -1,1 +1,12 @@
-<p>header works!</p>
+<nav>
+    <a href="#">
+        <img src="assets/images/site-logo.png" alt="Site logo: Onest" class="site-logo">
+    </a>
+    <ul class="main-menu">
+        <li><a routerLink="admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Admin</a></li>
+        <!-- <li><a routerLink="admin/users" routerLinkActive="active" >Users</a></li> Otro tipo de sintaxis abajo -->
+        <li><a [routerLink]="[ 'admin', 'users' ]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Users</a></li>    
+        <li><a routerLink="login" routerLinkActive="active">Login</a></li>
+        <li><a routerLink="register" routerLinkActive="active">Register</a></li>
+    </ul>
+</nav>
