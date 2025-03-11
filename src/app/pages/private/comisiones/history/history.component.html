@@ -1,1 +1,25 @@
-<p>history works!</p>
+<form 
+    class="form form-history"
+    [formGroup]="formData"
+    (ngSubmit)="onSubmit()"
+>
+    <h1>Historial</h1>
+
+    <div class="form-content">
+        <div class="field">
+            <label for="period">Periodo</label>
+            <input type="date">
+        </div>
+        <div class="field">
+            <label for="typeProtocol">Tipo de protocolo</label>
+            <select name="producto" id="producto">
+                <option value="propio">Propio</option>
+                <option value="bancario">Bancario</option>
+                <option value="garantizado">Garantizado</option>
+            </select>
+        </div> 
+        <div class="field">
+            <button type="submit">Consultar</button>
+        </div>
+    </div>
+</form>

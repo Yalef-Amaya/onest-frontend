@@ -1,0 +1,14 @@
+.pagenotfound{
+    justify-content: center;
+    text-align: center;
+}
+
+h1{
+    color: var(--main-orange);
+    font-size: 10rem;
+}
+
+h2{
+    color: white;
+    font-size: 3rem;
+}

@@ -1,0 +1,92 @@
+<form 
+    class="form form-users"
+    [formGroup]="formData"
+    (ngSubmit)="onSubmit()"
+>
+    <h1>Register User</h1>
+
+    <div class="form-content">
+        <div class="field">
+            <label for="typeDoc">Tipo de documento *</label>
+            <select name="typeDoc" id="typeDoc">
+                <option value="cedulaCiudadania">CC</option>
+                <option value="cedulaExtranjeria">CE</option>
+                <option value="pasaporte">Pasaporte</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="nDoc">Numero de documento *</label>
+            <input type="text" formControlName="nDoc" id="nDoc">
+            <div class="error">
+                @if( this.formData.get( 'nDoc' )?.invalid && ( this.formData.get( 'nDoc' )?.dirty || this.formData.get( 'nDoc' )?.touched ) ) {
+                    @if( this.formData.get( 'nDoc' )?.errors?.[ 'required' ] ) {
+                        <span>nDoc is required</span>
+                    }
+                    @if( this.formData.get( 'nDoc' )?.errors?.[ 'minlength' ] ) {
+                        <span>Minimum nDoc length is 7 characters</span>
+                    }
+                    @if( this.formData.get( 'password' )?.errors?.[ 'maxlength' ] ) {
+                        <span>Maximum password length is 12 characters</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="name">Nombre *</label>
+            <input type="text" formControlName="name" id="name">
+            <div class="error">
+                @if( this.formData.get( 'name' )?.invalid && ( this.formData.get( 'name' )?.dirty || this.formData.get( 'name' )?.touched ) ) {
+                    @if( this.formData.get( 'name' )?.errors?.['required'] ) {
+                        <span>Name is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="username">Username *</label>
+            <input type="text" formControlName="username" id="username">
+            <div class="error">
+                @if( this.formData.get( 'username' )?.invalid && ( this.formData.get( 'username' )?.dirty || this.formData.get( 'username' )?.touched ) ) {
+                    @if( this.formData.get( 'username' )?.errors?.['required'] ) {
+                        <span>Email is required</span>
+                    }
+                    @if( this.formData.get( 'username' )?.errors?.[ 'email'] ) {
+                        <span>Invalid email format</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="celular">Numero de celular *</label>
+            <input type="text" formControlName="celular" id="celular">
+        </div>
+        <div class="field">
+            <label for="password">Password *</label>
+            <input type="text" formControlName="password" id="password">
+        </div>
+        <div class="field">
+            <label for="role">Rol *</label>
+            <select name="role" id="role">
+                <option value="role rol1">Registered</option>
+                <option value="role rol2">Admin</option>
+                <option value="role rol3">Comercial</option>
+                <option value="role rol4">Cartera</option>
+                <option value="role rol5">Operativo</option>
+                <option value="role rol6">Tesoreria</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="office">Oficina *</label>
+            <select name="office" id="office">
+                <option value="ciudad ciudad1">Bogotá</option>
+                <option value="ciudad ciudad2">Medellín</option>
+                <option value="ciudad ciudad3">Cali</option>
+                <option value="ciudad ciudad4">Barranquilla</option>
+                <option value="ciudad ciudad5">Cartagena</option>
+            </select>
+        </div>
+        <div class="field">
+            <button type="submit">Crear</button>
+        </div>
+    </div>
+</form>

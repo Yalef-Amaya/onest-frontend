@@ -1,1 +1,22 @@
-<p>comisiones works!</p>
+<form 
+    class="form form-comisiones"
+    [formGroup]="formData"
+    (ngSubmit)="onSubmit()"
+>
+    <h1>Comisiones</h1>
+
+    <div class="form-content">
+        <div class="field">
+            <label for="userId">ID del usuario</label>
+            <input type="text" formControlName="userId" id="userId" placeholder="Ej: 1002957446">
+        </div>
+        <div class="field">
+            <label for="period">Periodo</label>
+            <input type="date">
+        </div>
+        <div class="field">
+            <button type="submit">Consultar</button>
+        </div>
+    </div>
+</form>
+

@@ -1,11 +1,55 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-register',
-  imports: [],
+  imports: [ ReactiveFormsModule, JsonPipe ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  formData!: FormGroup;
 
+  constructor( private authService: AuthService ) {
+    this.formData = new FormGroup({
+      username: new FormControl('', [ Validators.required, Validators.email ]),
+      password: new FormControl('', [ Validators.required, Validators.minLength(4), Validators.maxLength(10) ]),
+      name: new FormControl('', [ Validators.required] ),
+    });
+  }
+
+  onSubmit() {
+    const inputData = this.formData.value;
+
+    if( this.formData.valid ) {
+      console.log( inputData );
+
+      // this.authService.registerUser( inputData ).subscribe((data: any) => {console.log(data);
+      //   }
+      // );
+      this.authService.registerUser( inputData ).subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+        error: (err) => {
+          console.error(err);
+        },
+        complete: () => {
+          console.log('Registro exitoso');
+          this.formData.reset();
+        }
+      })
+    }
+
+    
+  }
 }
+
+/** estatus base de datos en terminal:
+ * sudo service mongod status
+ * 
+ * Levantar base de datos:
+ * sudo service mongod start
+ */

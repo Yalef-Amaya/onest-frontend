@@ -1,1 +1,29 @@
-<p>protocols works!</p>
+<form 
+    class="form form-protocols"
+    [formGroup]="formData"
+    (ngSubmit)="onSubmit()"
+>
+    <h1>Protocolos de comisiones</h1>
+
+    <div class="form-content">
+        <div class="field">
+            <label for="year">Año</label>
+            <select name="year" id="year">
+                <option value="year year1">2023</option>
+                <option value="year year2">2024</option>
+                <option value="year year3">2025</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="typeProduct">Tipo de protocolo</label>
+            <select name="producto" id="producto">
+                <option value="propio">Propio</option>
+                <option value="bancario">Bancario</option>
+                <option value="garantizado">Garantizado</option>
+            </select>
+        </div> 
+        <div class="field">
+            <button type="submit">Consultar</button>
+        </div>
+    </div>
+</form>
