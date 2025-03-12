@@ -1,29 +1,50 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { Cargo } from '../../../interfaces/cargos';
+import { CargosService } from '../../../services/cargos.service';
 
 @Component({
   selector: 'app-vinculacion',
-  imports: [ ReactiveFormsModule ],
+  imports: [ RouterLink ],
   templateUrl: './vinculacion.component.html',
   styleUrl: './vinculacion.component.css'
 })
 export class VinculacionComponent {
-  formData!: FormGroup;
+  cargos: Cargo[] = [];
+  isLoading: boolean = true;
 
-  constructor() {
-    this.formData = new FormGroup({
-      userId: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]),
-      ownerId: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]),
-    });
+  constructor( private cargosService: CargosService) {}
+
+  ngOnInit() {
+    this.cargosService.getCargos().subscribe({
+      next: ( data ) => {
+        console.log( data );
+        console.log( 'Succesfully obtains cargos');
+
+        this.cargos = data.data ?? [];
+      },
+      error: ( error ) => {
+        console.error( error );
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false
+      }
+    })
   }
 
-  onSubmit() {
-    const inputData = this.formData.value;
+  onRemove( cargoId : string ){
 
-    if( this.formData.valid ) {
-      console.log( inputData );
+    if( ! cargoId ){
+      console.error( 'Invalid cargo ID' );
+      return;
     }
 
-    this.formData.reset();
+    this.cargosService.deleteCargoById( cargoId ).subscribe({
+      next: ( data ) => {
+        console.log( data );
+        console.log( 'Delete cargo ')
+      }
+    })
   }
 }

@@ -1,1 +1,177 @@
-<p>form-register works!</p>
+<form 
+    class="form form-vinculacion-register"
+    [formGroup]="formData"
+    (ngSubmit)="onSubmit()"
+>
+    <h1>Registro del candidato</h1>
+
+    <div class="form-content">
+        <div class="field">
+            <label for="userId">ID del candidato</label>
+            <input type="text" formControlName="userId" id="userId" placeholder="Ej: 1002957446">
+            <div class="error">
+                @if( this.formData.get( 'userId' )?.invalid && ( this.formData.get( 'userId' )?.dirty || this.formData.get( 'userId' )?.touched ) ) {
+                    @if( this.formData.get( 'userId' )?.errors?.['required'] ) {
+                        <span>User ID is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="ownerId">ID del lider</label>
+            <input type="text" formControlName="ownerId" id="ownerId" placeholder="Ej: 6337582995">
+            <div class="error">
+                @if( this.formData.get( 'ownerId' )?.invalid && ( this.formData.get( 'ownerId' )?.dirty || this.formData.get( 'ownerId' )?.touched ) ) {
+                    @if( this.formData.get( 'ownerId' )?.errors?.['required'] ) {
+                        <span>Owner ID is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="typeDoc">Tipo de documento</label>
+            <select formControlName="typeDoc" id="typeDoc">
+                <option value="">Select...</option>
+                @for ( typeDoc of typesDocs; track $index) {
+                  <option [value]="typeDoc._id">{{ typeDoc.name }}</option>
+                }
+            </select>
+            <div class="error">
+                @if( this.formData.get( 'typeDoc' )?.invalid && ( this.formData.get( 'typeDoc' )?.dirty || this.formData.get( 'typeDoc' )?.touched ) ) {
+                    @if( this.formData.get( 'typeDoc' )?.errors?.['required'] ) {
+                        <span>Selecting a typeDoc is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="identificacion">Documento de identificacion</label>
+            <input type="text">
+            <div class="error">
+                @if( this.formData.get( 'identificacion' )?.invalid && ( this.formData.get( 'identificacion' )?.dirty || this.formData.get( 'identificacion' )?.touched ) ) {
+                    @if( this.formData.get( 'identificacion' )?.errors?.['required'] ) {
+                        <span>Upload a document is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="curriculum">Hoja de vida</label>
+            <input type="text">
+            <div class="error">
+                @if( this.formData.get( 'curriculum' )?.invalid && ( this.formData.get( 'curriculum' )?.dirty || this.formData.get( 'curriculum' )?.touched ) ) {
+                    @if( this.formData.get( 'curriculum' )?.errors?.['required'] ) {
+                        <span>Upload a document is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="rut">Rut</label>
+            <input type="text">
+            <div class="error">
+                @if( this.formData.get( 'rut' )?.invalid && ( this.formData.get( 'rut' )?.dirty || this.formData.get( 'rut' )?.touched ) ) {
+                    @if( this.formData.get( 'rut' )?.errors?.['required'] ) {
+                        <span>Upload a document is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="certificadoEps">Certificado de EPS</label>
+            <input type="text">
+            <div class="error">
+                @if( this.formData.get( 'certificadoEps' )?.invalid && ( this.formData.get( 'certificadoEps' )?.dirty || this.formData.get( 'certificadoEps' )?.touched ) ) {
+                    @if( this.formData.get( 'certificadoEps' )?.errors?.['required'] ) {
+                        <span>Upload a document is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="certificadoAfp">Certificado de AFP</label>
+            <input type="text">
+            <div class="error">
+                @if( this.formData.get( 'certificadoAfp' )?.invalid && ( this.formData.get( 'certificadoAfp' )?.dirty || this.formData.get( 'certificadoAfp' )?.touched ) ) {
+                    @if( this.formData.get( 'certificadoAfp' )?.errors?.['required'] ) {
+                        <span>Upload a document is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="certificacionLaboral">Certificacion laboral</label>
+            <input type="text">
+            <div class="error">
+                @if( this.formData.get( 'certificacionLaboral' )?.invalid && ( this.formData.get( 'certificacionLaboral' )?.dirty || this.formData.get( 'certificacionLaboral' )?.touched ) ) {
+                    @if( this.formData.get( 'certificacionLaboral' )?.errors?.['required'] ) {
+                        <span>Upload a document is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="cuentaBancaria">Certificación bancaria</label>
+            <input type="text">
+            <div class="error">
+                @if( this.formData.get( 'cuentaBancaria' )?.invalid && ( this.formData.get( 'cuentaBancaria' )?.dirty || this.formData.get( 'cuentaBancaria' )?.touched ) ) {
+                    @if( this.formData.get( 'cuentaBancaria' )?.errors?.['required'] ) {
+                        <span>Upload a document is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="formato entrevista">Formato de entrevista</label>
+            <input type="text">
+            <div class="error">
+                @if( this.formData.get( 'formato entrevista' )?.invalid && ( this.formData.get( 'formato entrevista' )?.dirty || this.formData.get( 'formato entrevista' )?.touched ) ) {
+                    @if( this.formData.get( 'formato entrevista' )?.errors?.['required'] ) {
+                        <span>Upload a document is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="typeFormatoProveedor">Tipo de formato de solicitud</label>
+            <select formControlName="typeFormatoProveedor" id="typeFormatoProveedor">
+                <option value="">Select...</option>
+                @for ( typeFormatoProveedor of typesFormatoProveedor; track $index) {
+                  <option [value]="typeFormatoProveedor._id">{{ typeFormatoProveedor.name }}</option>
+                }
+            </select>
+            <div class="error">
+                @if( this.formData.get( 'typeFormatoProveedor' )?.invalid && ( this.formData.get( 'typeFormatoProveedor' )?.dirty || this.formData.get( 'typeFormatoProveedor' )?.touched ) ) {
+                    @if( this.formData.get( 'typeFormatoProveedor' )?.errors?.['required'] ) {
+                        <span>Selecting a typeFormatoProveedor is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="formatoSolicitudProveedor">Formato de solicitud proveedores</label>
+            <input type="text">
+            <div class="error">
+                @if( this.formData.get( 'formatoSolicitudProveedor' )?.invalid && ( this.formData.get( 'formatoSolicitudProveedor' )?.dirty || this.formData.get( 'formatoSolicitudProveedor' )?.touched ) ) {
+                    @if( this.formData.get( 'formatoSolicitudProveedor' )?.errors?.['required'] ) {
+                        <span>Upload a document is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="formatoEntrevista">Formato de entrevista</label>
+            <input type="text">
+            <div class="error">
+                @if( this.formData.get( 'formatoEntrevista' )?.invalid && ( this.formData.get( 'formatoEntrevista' )?.dirty || this.formData.get( 'formatoEntrevista' )?.touched ) ) {
+                    @if( this.formData.get( 'formatoEntrevista' )?.errors?.['required'] ) {
+                        <span>Upload a document is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <button type="submit" [disabled]="this.formData.invalid">Vincular</button>
+        </div>
+    </div>
+</form>

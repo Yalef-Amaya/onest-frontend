@@ -10,22 +10,13 @@ import { Observable } from "rxjs";
 
 export class AuthService {
 
-    authUser!: User;
-    constructor( private authService: HttpClient) {}
-
-    get user(): User {
-        const authUser = localStorage.getItem( 'authUser' );
-        if ( authUser ) {
-            this.authUser = JSON.parse(authUser);
-        }
-        return this.authUser;
-    }
+    constructor( private http: HttpClient) {}
 
     registerUser( newUser: User ) : Observable<Response<User>> {
-        return this.authService.post<Response<User>>( 'http://localhost:3000/api/auth/register', newUser );
+        return this.http.post<Response<User>>( 'http://localhost:3000/api/auth/register', newUser );
       }
     
     loginUser( credentials: User ) : Observable<Response<User>> {
-        return this.authService.post<Response<User>>( 'http://localhost:3000/api/auth/login', credentials );
+        return this.http.post<Response<User>>( 'http://localhost:3000/api/auth/login', credentials );
       }
 }

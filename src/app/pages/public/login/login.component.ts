@@ -16,7 +16,7 @@ export class LoginComponent {
   constructor( private authService: AuthService) {
     this.formData = new FormGroup({
       username: new FormControl( '', [ Validators.required, Validators.email] ),
-      password: new FormControl( '', [Validators.required, Validators.minLength( 4 ), Validators.maxLength(12)] )
+      password: new FormControl( '', [Validators.required, Validators.minLength( 4 ), Validators.maxLength(10)] )
     });
   }
 

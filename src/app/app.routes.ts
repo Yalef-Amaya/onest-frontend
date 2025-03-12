@@ -16,9 +16,9 @@ import { DetailComponent } from './pages/private/comisiones/detail/detail.compon
 import { HistoryComponent } from './pages/private/comisiones/history/history.component';
 import { ProtocolsComponent } from './pages/private/comisiones/protocols/protocols.component';
 import { SummaryComponent } from './pages/private/comisiones/summary/summary.component';
-import { ApplicationsComponent } from './pages/private/vinculacion/applications/applications.component';
 import { FormRegisterComponent } from './pages/private/vinculacion/form-register/form-register.component';
 import { FormEditComponent } from './pages/private/vinculacion/form-edit/form-edit.component';
+import { UserRegisterComponent } from './pages/private/users/user-register/user-register.component';
 
 export const routes: Routes = [
     { path: 'home', component:  HomeComponent },
@@ -31,6 +31,7 @@ export const routes: Routes = [
     { path: 'admin/productividad', component: ProductividadComponent },
     { path: 'admin/vinculacion', component: VinculacionComponent },
     { path: 'admin/users', component: UsersComponent },
+    { path: 'admin/users/new', component: UserRegisterComponent},
     { path: 'admin/comisiones/detail', component: DetailComponent },
     { path: 'admin/comisiones/history', component: HistoryComponent },
     { path: 'admin/comisiones/protocols', component: ProtocolsComponent },
@@ -38,7 +39,6 @@ export const routes: Routes = [
     { path: 'admin/productividad/goals', component: GoalsComponent },
     { path: 'admin/productividad/incentives', component: IncentivesComponent },
     { path: 'admin/productividad/sales', component: SalesComponent },
-    { path: 'admin/vinculacion/applications', component: ApplicationsComponent },
     { path: 'admin/vinculacion/form-register', component: FormRegisterComponent },
     { path: 'admin/vinculacion/form-edit', component: FormEditComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
