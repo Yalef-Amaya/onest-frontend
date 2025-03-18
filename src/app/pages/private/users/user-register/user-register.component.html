@@ -5,88 +5,134 @@
 >
     <h1>Register User</h1>
 
-    <div class="form-content">
-        <div class="field">
-            <label for="typeDoc">Tipo de documento *</label>
-            <select name="typeDoc" id="typeDoc">
-                <option value="cedulaCiudadania">CC</option>
-                <option value="cedulaExtranjeria">CE</option>
-                <option value="pasaporte">Pasaporte</option>
-            </select>
-        </div>
-        <div class="field">
-            <label for="nDoc">Numero de documento *</label>
-            <input type="text" formControlName="nDoc" id="nDoc">
-            <div class="error">
-                @if( this.formData.get( 'nDoc' )?.invalid && ( this.formData.get( 'nDoc' )?.dirty || this.formData.get( 'nDoc' )?.touched ) ) {
-                    @if( this.formData.get( 'nDoc' )?.errors?.[ 'required' ] ) {
-                        <span>nDoc is required</span>
+    <div class="form-container">
+        <div class="form-content">
+            <div class="field">
+                <label for="typeDoc">Tipo de documento *</label>
+                <select name="typeDoc" id="typeDoc">
+                    <option value="cedulaCiudadania">CC</option>
+                    <option value="cedulaExtranjeria">CE</option>
+                    <option value="pasaporte">Pasaporte</option>
+                </select>
+                <div class="error">
+                    @if( this.formData.get( 'typeDoc' )?.invalid && ( this.formData.get( 'typeDoc' )?.dirty || this.formData.get( 'typeDoc' )?.touched ) ) {
+                        @if( this.formData.get( 'typeDoc' )?.errors?.[ 'required' ] ) {
+                            <span>Selec a typeDoc is required</span>
+                        }
                     }
-                    @if( this.formData.get( 'nDoc' )?.errors?.[ 'minlength' ] ) {
-                        <span>Minimum nDoc length is 7 characters</span>
-                    }
-                    @if( this.formData.get( 'password' )?.errors?.[ 'maxlength' ] ) {
-                        <span>Maximum password length is 12 characters</span>
-                    }
-                }
+                </div>
             </div>
-        </div>
-        <div class="field">
-            <label for="name">Nombre *</label>
-            <input type="text" formControlName="name" id="name">
-            <div class="error">
-                @if( this.formData.get( 'name' )?.invalid && ( this.formData.get( 'name' )?.dirty || this.formData.get( 'name' )?.touched ) ) {
-                    @if( this.formData.get( 'name' )?.errors?.['required'] ) {
-                        <span>Name is required</span>
+            <div class="field">
+                <label for="nDoc">Numero de documento *</label>
+                <input type="text" formControlName="nDoc" id="nDoc">
+                <div class="error">
+                    @if( this.formData.get( 'nDoc' )?.invalid && ( this.formData.get( 'nDoc' )?.dirty || this.formData.get( 'nDoc' )?.touched ) ) {
+                        @if( this.formData.get( 'nDoc' )?.errors?.[ 'required' ] ) {
+                            <span>nDoc is required</span>
+                        }
+                        @if( this.formData.get( 'nDoc' )?.errors?.[ 'minlength' ] ) {
+                            <span>Minimum nDoc length is 7 characters</span>
+                        }
+                        @if( this.formData.get( 'nDoc' )?.errors?.[ 'maxlength' ] ) {
+                            <span>Maximum nDoc length is 12 characters</span>
+                        }
                     }
-                }
+                </div>
             </div>
-        </div>
-        <div class="field">
-            <label for="username">Username *</label>
-            <input type="text" formControlName="username" id="username">
-            <div class="error">
-                @if( this.formData.get( 'username' )?.invalid && ( this.formData.get( 'username' )?.dirty || this.formData.get( 'username' )?.touched ) ) {
-                    @if( this.formData.get( 'username' )?.errors?.['required'] ) {
-                        <span>Email is required</span>
+            <div class="field">
+                <label for="name">Nombre *</label>
+                <input type="text" formControlName="name" id="name">
+                <div class="error">
+                    @if( this.formData.get( 'name' )?.invalid && ( this.formData.get( 'name' )?.dirty || this.formData.get( 'name' )?.touched ) ) {
+                        @if( this.formData.get( 'name' )?.errors?.['required'] ) {
+                            <span>Name is required</span>
+                        }
                     }
-                    @if( this.formData.get( 'username' )?.errors?.[ 'email'] ) {
-                        <span>Invalid email format</span>
-                    }
-                }
+                </div>
             </div>
-        </div>
-        <div class="field">
-            <label for="celular">Numero de celular *</label>
-            <input type="text" formControlName="celular" id="celular">
-        </div>
-        <div class="field">
-            <label for="password">Password *</label>
-            <input type="text" formControlName="password" id="password">
-        </div>
-        <div class="field">
-            <label for="role">Rol *</label>
-            <select name="role" id="role">
-                <option value="role rol1">Registered</option>
-                <option value="role rol2">Admin</option>
-                <option value="role rol3">Comercial</option>
-                <option value="role rol4">Cartera</option>
-                <option value="role rol5">Operativo</option>
-                <option value="role rol6">Tesoreria</option>
-            </select>
-        </div>
-        <div class="field">
-            <label for="office">Oficina *</label>
-            <select name="office" id="office">
-                <option value="ciudad ciudad1">Bogotá</option>
-                <option value="ciudad ciudad2">Medellín</option>
-                <option value="ciudad ciudad3">Cali</option>
-                <option value="ciudad ciudad4">Barranquilla</option>
-                <option value="ciudad ciudad5">Cartagena</option>
-            </select>
-        </div>
-        <div class="field">
-            <button type="submit">Crear</button>
+            <div class="field">
+                <label for="username">Username *</label>
+                <input type="text" formControlName="username" id="username">
+                <div class="error">
+                    @if( this.formData.get( 'username' )?.invalid && ( this.formData.get( 'username' )?.dirty || this.formData.get( 'username' )?.touched ) ) {
+                        @if( this.formData.get( 'username' )?.errors?.['required'] ) {
+                            <span>Email is required</span>
+                        }
+                        @if( this.formData.get( 'username' )?.errors?.[ 'email'] ) {
+                            <span>Invalid email format</span>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="field">
+                <label for="celular">Numero de celular *</label>
+                <input type="text" formControlName="celular" id="celular">
+                <div class="error">
+                    @if( this.formData.get( 'celular' )?.invalid && ( this.formData.get( 'celular' )?.dirty || this.formData.get( 'celular' )?.touched ) ) {
+                        @if( this.formData.get( 'celular' )?.errors?.['required'] ) {
+                            <span>Phone number is required</span>
+                        }
+                        @if( this.formData.get( 'celular' )?.errors?.[ 'minlength' ] ) {
+                            <span>Minimum length is 7 characters</span>
+                        }
+                        @if( this.formData.get( 'celular' )?.errors?.[ 'maxlength' ] ) {
+                            <span>Maximum length is 10 characters</span>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="field">
+                <label for="password">Password *</label>
+                <input type="text" formControlName="password" id="password">
+                <div class="error">
+                    @if( this.formData.get( 'password' )?.invalid && ( this.formData.get( 'password' )?.dirty || this.formData.get( 'password' )?.touched ) ) {
+                        @if( this.formData.get( 'password' )?.errors?.[ 'required' ] ) {
+                            <span>Password is required</span>
+                        }
+                        @if( this.formData.get( 'password' )?.errors?.[ 'minlength' ] ) {
+                            <span>Minimum password length is 6 characters</span>
+                        }
+                        @if( this.formData.get( 'password' )?.errors?.[ 'maxlength' ] ) {
+                            <span>Maximum password length is 12 characters</span>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="field">
+                <label for="cargo">Cargo *</label>
+                <select formControlName="cargo" id="cargo">
+                    <option value="">Select...</option>
+                    @for (cargo of cargos; track $index) {
+                        <option [value]="cargo._id">{{ cargo.name }}</option>
+                    }
+                </select>
+                <div class="error">
+                    @if( this.formData.get( 'cargo' )?.invalid && ( this.formData.get( 'cargo' )?.dirty || this.formData.get( 'cargo' )?.touched ) ) {
+                        @if( this.formData.get( 'cargo' )?.errors?.['required'] ) {
+                            <span>Selecting a cargo is required</span>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="field">
+                <label for="office">Oficina *</label>
+                <select formControlName="office" id="office">
+                    <option value="">Select...</option>
+                    @for ( office of offices; track $index) {
+                      <option [value]="office._id">{{ office.name }}</option>
+                    }
+                  </select>
+                  <div class="error">
+                      @if( this.formData.get( 'office' )?.invalid && ( this.formData.get( 'office' )?.dirty || this.formData.get( 'office' )?.touched ) ) {
+                          @if( this.formData.get( 'office' )?.errors?.['required'] ) {
+                              <span>Selecting a office is required</span>
+                          }
+                      }
+                  </div>
+            </div>
+            <div class="field">
+                <button type="submit">Crear</button>
+            </div>
         </div>
     </div>
 </form>

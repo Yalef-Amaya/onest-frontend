@@ -1,4 +1,4 @@
-export interface Cargo {
+export interface Cargos {
     _id?: string;
     userId: string;
     name: string;

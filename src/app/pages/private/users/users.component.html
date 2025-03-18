@@ -1,25 +1,43 @@
-<h1>Lista de usuarios</h1>
+<h1>Users list</h1>
 
-<table>
-    <thead>
-        <tr>
+@if ( isLoading ) {
+  <div>Loading users...</div>
+} @else {
+    @if (users.length === 0) {
+      <div class="no-data">There are no registered users.</div>
+    } @else {
+      <table class="data-table">
+        <thead>
+          <tr>
             <th>Type Doc</th>
-            <th>Numero de documento</th>
-            <th>Nombre</th>
-            <th>Ussername</th>
-            <th>Cargo</th>
-            <th>Celular</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-        </tr>
-    </tbody>
-    <tfoot></tfoot>
-</table>
+            <th>User Doc</th>
+            <th>User name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for ( user of users; track user._id ) {
+            <tr>
+              <td>{{ user.typeDoc }}</td>
+              <td>{{ user.nDoc}}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.celular }}</td>
+              <td>
+                <div class="cargo">{{ user.cargo.name || 'No cargo'  }}</div>
+              </td>
+              <td>
+                <div class="office">{{ user.office.name || 'No office'  }}</div>
+              </td>
+              <td>
+                <a [routerLink]="'/admin/users/edit/' + (user._id ?? '')">Editar</a>
+                <button (click)="onRemove( user._id ?? '' )">Eliminar</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+}
