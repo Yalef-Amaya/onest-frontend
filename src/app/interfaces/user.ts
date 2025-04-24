@@ -1,12 +1,13 @@
+import { Cargo } from "./cargos";
+
 export interface User {
-_id: any;
-office: any;
-cargo: any;
+    _id?: string;
     typeDoc: string;
     nDoc: string;
-    name: string;
+    name?: string;
     username: string;
-    celular: string;
-    password: string;
-    role: string;
+    celular?: string;
+    password?: string;
+    cargo: Cargo;
+    office?: string;
 }

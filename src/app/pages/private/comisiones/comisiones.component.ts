@@ -1,41 +1,56 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators, FormGroup} from '@angular/forms';
 import { ComisionesService } from '../../../services/comisiones.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-comisiones',
-  imports: [ ReactiveFormsModule],
+  imports: [ ReactiveFormsModule, RouterLink],
   templateUrl: './comisiones.component.html',
   styleUrl: './comisiones.component.css'
 })
 export class ComisionesComponent {
-  formData!: FormGroup;
+  comisiones: any;
+  isLoading: boolean = true;
 
-  constructor( private comisionesService: ComisionesService) {
-    this.formData = new FormGroup({
-      userId: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]),
-      period: new FormControl('', [Validators.required]),
+  constructor( private comisionesService: ComisionesService ) {}
+
+  ngOnInit() {
+    this.comisionesService.getComisiones().subscribe({
+      next: ( data ) => {
+        console.log( data );
+        console.log( 'Successfully obtains comsiones' );
+
+        this.comisiones = data.data ?? [];    // Asignara una lista vacia para evitar asignar undefined
+      },
+      error: ( error ) => {
+        console.error( error );
+        this.isLoading = false;               // Asegura que el estado de carga se actualice en caso de error
+      },
+      complete: () => {
+        this.isLoading = false;               // También lo actualiza cuando la petición es exitosa
+      }
     });
   }
 
-  onSubmit() {
-    const inputData = this.formData.value;
+  onRemove( comisionesId : string ) {
 
-    if( this.formData.valid ) {
-      console.log( inputData );
-
-      this.comisionesService.createComisiones( inputData ).subscribe({
-        next: ( data ) => {
-          console.log(data);
-        },
-        error: (err) => {
-          console.error( err );
-        },
-        complete: () => {
-          console.log( 'Register comision successfully' );
-          this.formData.reset
-        }
-      })
+    if( ! comisionesId ) {
+      console.error( 'Invalid product ID' );
+      return;
     }
+
+    this.comisionesService.deleteComisionesById( comisionesId ).subscribe({
+      next: ( data ) => {
+        console.log( data );
+        console.log( 'Delete comision successfully' );
+
+        this.ngOnInit();    // Actualiza datos
+      },
+      error: ( error ) => {
+        console.error( error );
+      },
+      complete: () => {},
+    });
   }
 }

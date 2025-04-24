@@ -4,14 +4,11 @@
         <img src='assets/images/image-removebg-preview.png' alt="Site logo: Onest" class="site-logo">
     </a>
     <ul class="main-menu">
-        <li><a routerLink="admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Admin</a></li>
+        <li><a routerLink="admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Portal</a></li>
         <!-- <li><a routerLink="admin/users" routerLinkActive="active" >Users</a></li> Otro tipo de sintaxis abajo -->
         <li><a routerLink="login" routerLinkActive="active">Login</a></li>
         <li><a routerLink="register" routerLinkActive="active">Register</a></li>
-        <li><a [routerLink]="[ 'admin', 'users' ]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Users</a></li>
-        <li><a [routerLink]="[ 'admin', 'vinculacion']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Vinculacion</a></li>
-        <li><a [routerLink]="[ 'admin', 'comisiones']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Comisiones</a></li>
-        <li><a [routerLink]="[ 'admin', 'productividad']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Productividad</a></li>
+        
     </ul>
-    <pre>{{user | json }}</pre>
+    <!-- <pre>{{user | json }}</pre> -->
 </nav>

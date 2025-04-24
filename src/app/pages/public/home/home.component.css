@@ -1,0 +1,44 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #1a1a1a; 
+    font-family: Arial, sans-serif;
+}
+
+.animated-text {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #ff6f00; 
+    text-align: center;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.animated-text:hover {
+    transform: scale(1.1);
+    letter-spacing: 6px;
+    text-shadow: 0 0 5px rgba(255, 111, 0, 0.5); 
+}
+
+.animated-text::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: white; 
+    bottom: -10px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.animated-text:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}

@@ -1,8 +1,8 @@
-export interface Cargo {
+export interface Vinculacion {
     _id?: string;
     userId: string;
     name: string;
     bossId: string;
     createdAt?: string;
-    updatedAt?: string;
-  }
+    updatedAt?: string; 
+}

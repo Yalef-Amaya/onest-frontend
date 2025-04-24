@@ -1,0 +1,105 @@
+<form 
+    class="form form-register"
+    [formGroup]="formData"
+    (ngSubmit)="onSubmit()"
+>
+    <h1>Registro</h1>
+
+    <div class="form-content">
+        <!-- <div class="field">
+            <label for="userId">UserId *</label>
+            <input type="text" formControlName="userId" id="userId" placeholder="Ej: 1234567890">
+            <div class="error">
+                @if ( this.formData.get('userId')?.invalid && (this.formData.get('userId')?.dirty || this.formData.get('userId')?.touched)) {
+                    @if ( this.formData.get ('userId')?.errors?.['require']) {
+                        <span>nDoc is required</span>
+                    }
+                }
+            </div>
+        </div> -->
+        <div class="field">
+            <label for="office">Oficina *</label>
+            <select formControlName="office" id="office">
+                <option value="location location1">BOGOTA</option>
+                <option value="location location2">CALI</option>
+                <option value="location location3">MEDELLIN</option>
+                <option value="location location4">BARRANQUILLA</option>
+                <option value="location location5">CARTAGENA</option>
+                <!-- <option value="">Select...</option>
+                @for ( office of offices; track $index) {
+                  <option [value]="office._id">{{ office.name }}</option>
+                } -->
+              </select>
+              <div class="error">
+                  @if( this.formData.get( 'office' )?.invalid && ( this.formData.get( 'office' )?.dirty || this.formData.get( 'office' )?.touched ) ) {
+                      @if( this.formData.get( 'office' )?.errors?.['required'] ) {
+                          <span>Selecting a office is required</span>
+                      }
+                  }
+              </div>
+        </div>
+        <div class="field">
+            <label for="periodo">Periodo *</label>
+            <input type="date" formControlName="periodo" id="periodo">
+            <div class="error">
+                @if ( this.formData.get( 'periodo' )?.invalid && ( this.formData.get( 'periodo' )?.dirty || this.formData.get( 'periodo' )?.touched )) {
+                    @if ( this.formData.get( 'periodo' )?.errors?.['required'] ) {
+                        <span>Periodo is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <!-- <div class="field">
+            <label for="productosComisionados">Productos comisionados*</label>
+            <select name="productosComisionados" id="productosComisionados">
+                <option value="producto productoPropio">Producto propio</option>
+                <option value="producto multiproducto">Multiproducto</option>
+            </select>
+        </div> -->
+        <div class="field">
+            <label for="totalComision">Total comisionado *</label>
+            <input type="number" formControlName="totalComision" id="totalComision">
+            <div class="error">
+                @if ( this.formData.get( 'totalComision' )?.invalid && ( this.formData.get( 'totalComision' )?.dirty || this.formData.get( 'totalComision' )?.touched )) {
+                    @if ( this.formData.get( 'totalComision' )?.errors?.['required'] ) {
+                        <span>Total comisionado is required</span>
+                    }
+                }
+            </div>
+        </div>
+        <!-- <div class="field">
+            <label for="pagado">Pagado</label>
+            <input type="text" name="pagado" id="pagado">
+            <div class="error">
+                @if ( this.formData.get( 'pagado' )?.invalid && ( this.formData.get( 'pagado' )?.dirty || this.formData.get( 'pagado' )?.touched )) {
+                    @if ( this.formData.get( 'pagado' )?.errors?.['required'] ) {
+                        <span>Pagado is required</span>
+                    }
+                }
+            </div>
+        </div> -->
+        <div class="field">
+            <button type="submit">Registrar</button>
+        </div>
+
+        <!-- <div class="form-errors">
+            <div class="title">Form fields error</div>
+            <div class="field">
+                <label for="name">Name</label>
+                <code class="error">{{ formData.get( 'name' )?.errors | json }}</code>
+            </div>
+            <div class="field">
+                <label for="username">Username</label>
+                <code class="error">{{ formData.get( 'username' )?.errors | json }}</code>
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <code class="error">{{ formData.get( 'password' )?.errors | json }}</code>
+            </div>
+            <div class="field">
+                <label for="username">Valid form</label>
+                <code class="error">{{ formData.valid }}</code>
+            </div>
+        </div> -->
+    </div>
+</form>

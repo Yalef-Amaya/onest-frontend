@@ -19,7 +19,7 @@ export class UsersService {
   }
 
   getUsers() : Observable<Response<User[]>> {
-    return this.http.get<Response<User[]>>('http://localhost:3000')
+    return this.http.get<Response<User[]>>('http://localhost:3000/api/users');
   }
 
   createUser( newUser: User ) : Observable<Response<User>> {

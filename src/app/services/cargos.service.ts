@@ -26,15 +26,15 @@ export class CargosService {
     return this.http.post<Response<Cargo>>( 'http://localhost:3000/api/cargos', newCargo, { headers: this.headers } );
   }
 
-  deleteCargoById( id: string ) : Observable<Response<Cargo>> {
+  deleteCargosById( id: string ) : Observable<Response<Cargo>> {
     return this.http.delete<Response<Cargo>>( `http://localhost:3000/api/cargos/${ id }`, { headers: this.headers } );
   }
 
-  getCargoById( id: string ) : Observable<Response<Cargo>> {
+  getCargosById( id: string ) : Observable<Response<Cargo>> {
     return this.http.get<Response<Cargo>>( `http://localhost:3000/api/cargos/${ id }` );
   }
 
-  updateCargoById( id: string, updatedCargo: any ) {
-    return this.http.patch( `http://localhost:3000/api/cargos/${ id }`, updatedCargo, { headers: this.headers } )
+  updateCargosById( id: string, updatedCargos: any ) {
+    return this.http.patch( `http://localhost:3000/api/cargos/${ id }`, updatedCargos, { headers: this.headers } )
   }
 }

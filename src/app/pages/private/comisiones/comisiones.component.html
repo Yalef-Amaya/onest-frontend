@@ -1,22 +1,49 @@
-<form 
-    class="form form-comisiones"
-    [formGroup]="formData"
-    (ngSubmit)="onSubmit()"
->
-    <h1>Comisiones</h1>
+<h1>Comisiones list</h1>
 
-    <div class="form-content">
-        <div class="field">
-            <label for="userId">ID del usuario</label>
-            <input type="text" formControlName="userId" id="userId" placeholder="Ej: 1002957446">
-        </div>
-        <div class="field">
-            <label for="period">Periodo</label>
-            <input type="date">
-        </div>
-        <div class="field">
-            <button type="submit">Consultar</button>
-        </div>
-    </div>
-</form>
+@if ( isLoading ) {
+  <div>Loading users...</div>
+} @else {
+    @if (comisiones.length === 0) {
+      <div class="no-data">There are no registered comisiones.</div>
+    } @else {
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Office</th>
+            <th>Periodo</th>
+            <th>Total comisionado</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for ( item of comisiones; track item._id ) {
+            <tr>
+              <td>
+                <div class="typeDoc">
+                  {{ item.typeDoc }}
+                </div>
+              </td>
+              <td>{{ item.office}}</td>
+              <td>{{ item.periodo }}</td>
+              <td>{{ item.totalComision }}</td>
+              <!-- <td>{{ item.userId }}</td> -->
+              <td>
+                <div class="office">{{ item.office.name }}</div>
+              </td>
+              <td>
+                <div class="periodo">{{ item.periodo }}</div>
+              </td>
+              <td>
+                <div class="totalComision">{{ item.totalComision }}</div>
+              </td>
+              <td>
+                <div class="action"><a [routerLink]=" '/admin/comisiones/edit/' + (item._id ?? '') " class="btn btn-primary">Edit</a>
+                <button (click)="onRemove(item._id ?? '')" class="btn btn-warning">Delete</button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+}
 

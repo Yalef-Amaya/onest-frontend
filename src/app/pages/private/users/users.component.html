@@ -18,22 +18,27 @@
           </tr>
         </thead>
         <tbody>
-          @for ( user of users; track user._id ) {
+          @for ( userItem of users; track userItem._id ) {
             <tr>
-              <td>{{ user.typeDoc }}</td>
-              <td>{{ user.nDoc}}</td>
-              <td>{{ user.name }}</td>
-              <td>{{ user.username }}</td>
-              <td>{{ user.celular }}</td>
               <td>
-                <div class="cargo">{{ user.cargo.name || 'No cargo'  }}</div>
+                <div class="typeDoc">
+                  {{ userItem.typeDoc }}
+                </div>
+              </td>
+              <td>{{ userItem.nDoc}}</td>
+              <td>{{ userItem.name }}</td>
+              <td>{{ userItem.username }}</td>
+              <td>{{ userItem.celular }}</td>
+              <td>
+                <div class="cargo">{{ userItem.cargo.name || 'No cargo'  }}</div>
               </td>
               <td>
-                <div class="office">{{ user.office.name || 'No office'  }}</div>
+                <div class="office">{{ userItem.office || 'No office'  }}</div>
               </td>
               <td>
-                <a [routerLink]="'/admin/users/edit/' + (user._id ?? '')">Editar</a>
-                <button (click)="onRemove( user._id ?? '' )">Eliminar</button>
+                <div class="action"><a [routerLink]=" '/admin/users/edit/' + (userItem._id ?? '') " class="btn btn-primary">Edit</a>
+                <button (click)="onRemove(userItem._id ?? '')" class="btn btn-warning">Delete</button>
+                </div>
               </td>
             </tr>
           }

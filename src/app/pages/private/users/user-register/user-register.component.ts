@@ -2,27 +2,26 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersService } from '../../../../services/user.service';
 import { CargosService } from '../../../../services/cargos.service';
-import { JsonPipe } from '@angular/common';
 import { OfficesService } from '../../../../services/offices.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-register',
-  imports: [ReactiveFormsModule, JsonPipe],
+  imports: [ReactiveFormsModule],
   templateUrl: './user-register.component.html',
   styleUrl: './user-register.component.css'
 })
 export class UserRegisterComponent {
   formData!: FormGroup;
-  cargos!: Array<Cargos>;
-  offices!: Array<Office>; ;
-  userId!: string;
+  cargos: any;
+  offices: any;
+  userId: string = '';
 
   constructor(
     private userService: UsersService, 
     private cargosService: CargosService,
     private officesService: OfficesService,
-    private router: ActivatedRoute
+    private router: Router
   ) {
     console.log('%c constructor: Se ejecuta cuando Angular instancia el componente.', 'color: blue');
 
@@ -39,7 +38,9 @@ export class UserRegisterComponent {
   }
 
   ngOnInit(){
-    
+    this.loadCargos();
+    this.loadOffices();
+
   }
 
   private loadCargos() {
@@ -70,37 +71,18 @@ export class UserRegisterComponent {
     });
   }
 
-  private getRouteId () {
-    this.router.paramMap.subscribe( param => {
-      this.userId = params.get( 'id' ) ?? '';
-      console.log(' ID del cargo ', this.userId );
-    });
-  }
-
-  private loadFormData( cargoId: string ) {
-    if( cargoId ) {
-
-      this.userService.deleteUserById(cargoId).subscribe({
-        next: ( data ) => {
-          console.log( data );
-
-          this.formData.patchValue
-        }
-      })
-    }
-  }
   onSubmit() {
     const inputData = this.formData.value;
 
     if( this.formData.valid ) {
       console.log( inputData );
 
-      this.userService.createUsers( inputData ).subscribe({
+      this.userService.createUser( inputData ).subscribe({
         next: ( data ) => {
           console.log(data);
           console.log( 'User registered successfully');
 
-          this.router.navigate([ 'dashboard', 'users']);
+          this.router.navigateByUrl( 'admin/users');
         },
         error: (error) => {
           console.error( error );
@@ -110,5 +92,7 @@ export class UserRegisterComponent {
         }
     });
     }
+
+    this.formData.reset();
   }
 }
