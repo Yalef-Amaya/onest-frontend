@@ -27,9 +27,9 @@ import { ComisionesEditComponent } from './pages/private/comisiones/comisiones-e
 export const routes: Routes = [
     { path: 'home', component:  HomeComponent },
     { path: 'login', component:  LoginComponent, canActivate: [noAuthGuard] },
-    { path: 'register', component:  RegisterComponent, canActivate: [noAuthGuard] },
+    { path: 'register', component:  RegisterComponent },
     { path: 'credits', component:  CreditsComponent },
-    { path: 'admin', component:  AdminComponent },
+    { path: 'admin', component:  AdminComponent, canActivate: [authGuard] },
     { path: '404', component:  PageNotFoundComponent },
     { path: 'admin/comisiones', component: ComisionesComponent },
     { path: 'admin/productividad', component: ProductividadComponent, canActivate: [authGuard] },

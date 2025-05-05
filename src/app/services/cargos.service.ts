@@ -19,22 +19,22 @@ export class CargosService {
   }
 
   getCargos() : Observable<Response<Cargo[]>> {
-    return this.http.get<Response<Cargo[]>>('http://localhost:3000/api/cargos');
+    return this.http.get<Response<Cargo[]>>('http://3.135.209.89:3000/api/cargos');
   }
 
   createCargo( newCargo: Cargo ) : Observable<Response<Cargo>> {
-    return this.http.post<Response<Cargo>>( 'http://localhost:3000/api/cargos', newCargo, { headers: this.headers } );
+    return this.http.post<Response<Cargo>>( 'http://3.135.209.89:3000/api/cargos', newCargo, { headers: this.headers } );
   }
 
   deleteCargosById( id: string ) : Observable<Response<Cargo>> {
-    return this.http.delete<Response<Cargo>>( `http://localhost:3000/api/cargos/${ id }`, { headers: this.headers } );
+    return this.http.delete<Response<Cargo>>( `http://3.135.209.89:3000/api/cargos/${ id }`, { headers: this.headers } );
   }
 
   getCargosById( id: string ) : Observable<Response<Cargo>> {
-    return this.http.get<Response<Cargo>>( `http://localhost:3000/api/cargos/${ id }` );
+    return this.http.get<Response<Cargo>>( `http://3.135.209.89:3000/api/cargos/${ id }` );
   }
 
   updateCargosById( id: string, updatedCargos: any ) {
-    return this.http.patch( `http://localhost:3000/api/cargos/${ id }`, updatedCargos, { headers: this.headers } )
+    return this.http.patch( `http://3.135.209.89:3000/api/cargos/${ id }`, updatedCargos, { headers: this.headers } )
   }
 }

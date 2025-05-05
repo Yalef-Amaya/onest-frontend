@@ -19,22 +19,22 @@ export class UsersService {
   }
 
   getUsers() : Observable<Response<User[]>> {
-    return this.http.get<Response<User[]>>('http://localhost:3000/api/users');
+    return this.http.get<Response<User[]>>('http://3.135.209.89:3000/api/users');
   }
 
   createUser( newUser: User ) : Observable<Response<User>> {
-    return this.http.post<Response<User>>('http://localhost:3000/api/users', newUser, { headers: this.headers });
+    return this.http.post<Response<User>>('http://3.135.209.89:3000/api/users', newUser, { headers: this.headers });
   }
 
   deleteUserById( id: string ) : Observable<Response<User>> {
-    return this.http.delete<Response<User>>(`http://localhost:3000/api/users/${ id }`, {headers: this.headers });
+    return this.http.delete<Response<User>>(`http://3.135.209.89:3000/api/users/${ id }`, {headers: this.headers });
   }
 
   getUserById( id: string ) : Observable<Response<User>>{
-    return this.http.get<Response<User>>(`http://localhost:3000/api/users/${ id }`);
+    return this.http.get<Response<User>>(`http://3.135.209.89:3000/api/users/${ id }`);
   }
 
   updateUserById( id: string, updateUser: any){
-    return this.http.patch( `http://localhost:3000/api/users/${ id }`, updateUser, { headers: this.headers })
+    return this.http.patch( `http://3.135.209.89:3000/api/users/${ id }`, updateUser, { headers: this.headers })
   }
 }

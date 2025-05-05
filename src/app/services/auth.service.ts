@@ -29,11 +29,11 @@ export class AuthService {
   }
 
   registerUser( newUser: User ) : Observable<Response<User>> {
-    return this.http.post<Response<User>>( 'http://localhost:3000/api/auth/register', newUser );
+    return this.http.post<Response<User>>( 'http://3.135.209.89:3000/api/auth/register', newUser );
   }
 
   loginUser( credentials: User ) : Observable<Response<User>> {
-    return this.http.post<Response<User>>( 'http://localhost:3000/api/auth/login', credentials );
+    return this.http.post<Response<User>>( 'http://3.135.209.89:3000/api/auth/login', credentials );
   }
 
   logoutUser() : Observable<boolean> {
@@ -49,7 +49,7 @@ export class AuthService {
   }
 
   verifyAuthenticatedUser() : Observable<boolean> {
-    return this.http.get<Response<User>>( 'http://localhost:3000/api/auth/re-new-token', { headers: this.getHeaders() } )
+    return this.http.get<Response<User>>( 'http://3.135.209.89:3000/api/auth/re-new-token', { headers: this.getHeaders() } )
       .pipe(
         map(response => {
           console.log( response.data );

@@ -16,18 +16,18 @@ export class ComisionesService {
       }
 
     createComisiones( newComision: Comisiones): Observable<Response<Comisiones>>{
-        return this.http.post<Response<Comisiones>>('http://localhost:3000/api/comisiones', newComision, { headers: this.getHeaders()});
+        return this.http.post<Response<Comisiones>>('http://3.135.209.89:3000/api/comisiones', newComision, { headers: this.getHeaders()});
     }
 
     getComisiones(): Observable<Response<Comisiones[]>>{
-        return this.http.get<Response<Comisiones[]>>('http://localhost:3000/api/comisiones', { headers: this.getHeaders()});
+        return this.http.get<Response<Comisiones[]>>('http://3.135.209.89:3000/api/comisiones', { headers: this.getHeaders()});
     }
 
     getComisionesById( comisionesId: string ): Observable<Response<Comisiones>>{
-        return this.http.get<Response<Comisiones>>(`http://localhost:3000/api/comisiones/${comisionesId}`, { headers: this.getHeaders()});
+        return this.http.get<Response<Comisiones>>(`http://3.135.209.89:3000/api/comisiones/${comisionesId}`, { headers: this.getHeaders()});
     }
 
     deleteComisionesById( comisionesId: string ): Observable<Response<Comisiones>>{
-        return this.http.delete<Response<Comisiones>>(`http://localhost:3000/api/comisiones/${comisionesId}`, { headers: this.getHeaders()});
+        return this.http.delete<Response<Comisiones>>(`http://3.135.209.89:3000/api/comisiones/${comisionesId}`, { headers: this.getHeaders()});
     }
 }

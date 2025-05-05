@@ -1,34 +1,67 @@
-.logos{
-    display: flex;
-    gap: .5rem;
-}
-.site-logo{
-    max-width: 3rem;
-    width: 100%;
+.logos {
+  display: flex;
+  gap: 0.5rem;
 }
 
-nav{
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.site-logo {
+  max-width: 3rem;
+  width: 100%;
+}
+
+nav {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 5rem 1rem 2rem;
+  height: 2rem;
+  top: 0;
+}
+
+.main-menu {
+  display: flex;
+  justify-content: center;
+  gap: 19rem;
+  align-items: center;
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: blue;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mobile first responsive styles */
+@media (min-width: 600px) {
+  nav {
     padding: 1rem 5rem 1rem 2rem;
     height: 2rem;
-    top: 0;
-}
-
-.main-menu{
-    display: flex;
-    justify-content: center;
+  }
+  .main-menu {
     gap: 19rem;
-    align-items: center;
-    width: 100%;
+  }
+  ul {
+    flex-direction: row;
+  }
 }
 
-ul{
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: blue;
+@media (max-width: 599px) {
+  nav {
+    padding: 1rem 1rem;
+    height: auto;
+    flex-wrap: wrap;
+  }
+  .main-menu {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }

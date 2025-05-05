@@ -17,22 +17,22 @@ export class VinculacionService {
   }
 
   registerVinculacion( newVinculacion: Vinculacion ) : Observable<Response<Vinculacion>> {
-    return this.http.post<Response<Vinculacion>>( 'http://localhost:3000/api/vinculacion', newVinculacion, { headers: this.getHeaders() } );
+    return this.http.post<Response<Vinculacion>>( 'http://3.135.209.89:3000/api/vinculacion', newVinculacion, { headers: this.getHeaders() } );
   }
 
   getVinculaciones() : Observable<Response<Vinculacion[]>> {
-    return this.http.get<Response<Vinculacion[]>>( 'http://localhost:3000/api/vinculacion', { headers: this.getHeaders() } );
+    return this.http.get<Response<Vinculacion[]>>( 'http://3.135.209.89:3000/api/vinculacion', { headers: this.getHeaders() } );
   }
 
   deleteVinculacionById( id: string ) : Observable<Response<Vinculacion>> {
-    return this.http.delete<Response<Vinculacion>>( `http://localhost:3000/api/vinculacion/${ id }`, { headers: this.getHeaders() } );
+    return this.http.delete<Response<Vinculacion>>( `http://3.135.209.89:3000/api/vinculacion/${ id }`, { headers: this.getHeaders() } );
   }
 
   getVinculacionById( id: string ) : Observable<Response<Vinculacion>> {
-    return this.http.get<Response<Vinculacion>>( `http://localhost:3000/api/vinculacion/${ id }`, { headers: this.getHeaders() } );
+    return this.http.get<Response<Vinculacion>>( `http://3.135.209.89:3000/api/vinculacion/${ id }`, { headers: this.getHeaders() } );
   }
 
   updateVinculacionById( id: string, updatedVinculacion: any ) {
-    return this.http.patch( `http://localhost:3000/api/vinculacion/${ id }`, updatedVinculacion, { headers: this.getHeaders() } )
+    return this.http.patch( `http://3.135.209.89:3000/api/vinculacion/${ id }`, updatedVinculacion, { headers: this.getHeaders() } )
   }
 }

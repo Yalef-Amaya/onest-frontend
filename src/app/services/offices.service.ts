@@ -18,22 +18,22 @@ export class OfficesService {
   }
 
   getOffices() : Observable<Response<Offices[]>> {
-    return this.http.get<Response<Offices[]>>( 'http://localhost:3000/api/offices' );
+    return this.http.get<Response<Offices[]>>( 'http://3.135.209.89:3000/api/offices' );
   }
 
   createOffices( newOffice: Offices ) : Observable<Response<Offices>> {
-    return this.http.post<Response<Offices>>( 'http://localhost:3000/api/offices', newOffice, { headers: this.headers } );
+    return this.http.post<Response<Offices>>( 'http://3.135.209.89:3000/api/offices', newOffice, { headers: this.headers } );
   }
 
   deleteOfficesById( id: string ) : Observable<Response<Offices>> {
-    return this.http.delete<Response<Offices>>( `http://localhost:3000/api/offices/${ id }`, { headers: this.headers } );
+    return this.http.delete<Response<Offices>>( `http://3.135.209.89:3000/api/offices/${ id }`, { headers: this.headers } );
   }
 
   getOfficesById( id: string ) : Observable<Response<Offices>> {
-    return this.http.get<Response<Offices>>( `http://localhost:3000/api/offices/${ id }` );
+    return this.http.get<Response<Offices>>( `http://3.135.209.89:3000/api/offices/${ id }` );
   }
 
   updateOfficesById( id: string, updatedOffices: any ) {
-    return this.http.patch( `http://localhost:3000/api/offices/${ id }`, updatedOffices, { headers: this.headers } )
+    return this.http.patch( `http://3.135.209.89:3000/api/offices/${ id }`, updatedOffices, { headers: this.headers } )
   }
 }

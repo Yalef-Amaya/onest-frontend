@@ -13,8 +13,8 @@ export const noAuthGuard: CanActivateFn = (route, state) => {
 
       /** Si esta autenticado */
       if ( isAuthenticated ) {
-        router.navigate([ '/dashboard' ]);  // Redirige al dashboard si está autenticado
-        return false;                       // Bloquea el acceso
+        router.navigate([ '/admin' ]);  // Redirect to admin portal if authenticated
+        return false;                   // Block access to login/register
       }
       return true;                          // Permite el acceso si no está autenticado
     }),
